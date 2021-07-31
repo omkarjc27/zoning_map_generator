@@ -27,7 +27,8 @@ class generate_tiles:
 	def generate_matrix(self,prefix):
 		print(self.quad_prefix+prefix)
 		if len(self.quad_prefix+prefix)==self.bottom_level:
-			matrix = np.array([[int(self.data_dict[prefix])]])
+			val = int(self.data_dict[prefix])
+			matrix = np.array([[(self.colors_dict[val][0], self.colors_dict[val][1], 100)]])
 		else:
 			zeroth = self.generate_matrix(prefix+'0')
 			first = self.generate_matrix(prefix+'1')
@@ -41,18 +42,8 @@ class generate_tiles:
 		return matrix
 
 	def generate_image(self,prefix,matrix):
-		img = Image.new( 'RGB', (256,256), "white")
-		pixels = img.load()
-		r,c=0,0
-		mat_extent=256//np.shape(matrix)[0]
-		for i in range(img.size[0]):
-		    for j in range(img.size[1]):
-		        #print(r,c)
-		        pixels[i,j] = (self.colors_dict[matrix[r,c]][0], self.colors_dict[matrix[r,c]][1], 100)
-		        c+=(j%mat_extent)//(mat_extent-1)
-		    c=0
-		    r+=(i%mat_extent)//(mat_extent-1)
-
+		img = Image.fromarray(matrix.astype(np.uint8))
+		img = img.resize((256,256))
 		img.save(self.tiles_folder+self.quad_prefix+prefix+".jpg")
 
 generate_tiles('02301023020111','files/map_data.csv','tiles/')
