@@ -8,7 +8,7 @@ import numpy as np
 import shutil
 
 model = tf.keras.models.load_model('../input/land-scene-classifier/land_classifier.h5')
-filenames = ["".join(p) for p in itertools.product(['0','1','2','3'], repeat=5)]
+filenames = ["".join(p) for p in itertools.product(['0','1','2','3'], repeat=6)]
 
 # Download Images
 shutil.rmtree("./images",ignore_errors=True)
@@ -16,7 +16,7 @@ os.makedirs('./images')
 for i in range(len(filenames)):
     quadkey = filenames[i]
     if i%100==0:print(quadkey) 
-    urllib.request.urlretrieve("http://ecn.t0.tiles.virtualearth.net/tiles/a02301023020111{}.jpeg?g=10583".format(quadkey), "./images/02301023020111{}.jpeg".format(quadkey))
+    urllib.request.urlretrieve("http://ecn.t0.tiles.virtualearth.net/tiles/a0230102302011{}.jpeg?g=10583".format(quadkey), "./images/02301023020111{}.jpeg".format(quadkey))
 print("Done.")
 
 # Create Dataset
