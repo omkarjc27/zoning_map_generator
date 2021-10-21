@@ -15,7 +15,7 @@
                     center: new Microsoft.Maps.Location(37.43089803726596,-122.17322408415534),
                     zoom: 14,
                     minZoom: 14,
-                    maxZoom: 16,
+                    maxZoom: 18,
                     mapTypeId: Microsoft.Maps.MapTypeId.aerial
                 });
                 var ZoneTileSource = new Microsoft.Maps.TileSource({
@@ -23,7 +23,7 @@
                 });
                 var ZoneTileLayer = new Microsoft.Maps.TileLayer({
                     mercator: ZoneTileSource,
-                    opacity:0.5,
+                    opacity:0.7,
                 });
                 map.layers.insert(ZoneTileLayer);
                 

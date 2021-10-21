@@ -34,16 +34,20 @@ class generate_tiles:
 			first = self.generate_matrix(prefix+'1')
 			second = self.generate_matrix(prefix+'2')
 			third = self.generate_matrix(prefix+'3')
-			
+			#print(zeroth)
+			#print(first)
+			#print(second)
+			#print(third)
 			matrix = np.concatenate((np.concatenate((zeroth, first), axis=1),np.concatenate((second, third), axis=1)),axis=0)
 
 		if len(self.quad_prefix+prefix)<=self.max_image_prod:
+			#print(matrix)
 			self.generate_image(prefix,matrix)
 		return matrix
 
 	def generate_image(self,prefix,matrix):
 		img = Image.fromarray(matrix.astype(np.uint8))
-		img = img.resize((256,256))
+		img = img.resize((256,256),resample=Image.NEAREST)
 		img.save(self.tiles_folder+self.quad_prefix+prefix+".jpg")
 
 generate_tiles('0230102302011','files/map_data.csv','tiles/')
