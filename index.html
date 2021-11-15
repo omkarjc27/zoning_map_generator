@@ -3,7 +3,7 @@
     <head>
         <title>Zoning Map</title>
         <meta http-equiv='Content-Type' content='text/html; charset=utf-8'/>
-        <style type='text/css'>body{margin:0;padding:0;overflow:hidden;font-family:'Segoe UI',Helvetica,Arial,Sans-Serif}</style>
+        <style type='text/css'>body{margin:0;padding:0;overflow:hidden}</style>
     </head>
     <body>
         <div id='printoutPanel'></div>
@@ -12,10 +12,10 @@
         <script type='text/javascript'>
             function loadMapScenario() {
                 var map = new Microsoft.Maps.Map(document.getElementById('myMap'), {
-                    center: new Microsoft.Maps.Location(37.43089803726596,-122.17322408415534),
+                    center: new Microsoft.Maps.Location(37.42089803726596,-122.19322408415534),
                     zoom: 14,
                     minZoom: 14,
-                    maxZoom: 18,
+                    maxZoom: 19,
                     mapTypeId: Microsoft.Maps.MapTypeId.aerial
                 });
                 var ZoneTileSource = new Microsoft.Maps.TileSource({
@@ -23,7 +23,7 @@
                 });
                 var ZoneTileLayer = new Microsoft.Maps.TileLayer({
                     mercator: ZoneTileSource,
-                    opacity:0.7,
+                    opacity:0.5,
                 });
                 map.layers.insert(ZoneTileLayer);
                 
