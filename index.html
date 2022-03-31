@@ -12,9 +12,8 @@
         <script type='text/javascript'>
             function loadMapScenario() {
                 var map = new Microsoft.Maps.Map(document.getElementById('myMap'), {
-                    center: new Microsoft.Maps.Location(37.42089803726596,-122.19322408415534),
+                    center: new Microsoft.Maps.Location(19.273609795565818,73.0850727274619),
                     zoom: 14,
-                    minZoom: 14,
                     maxZoom: 19,
                     mapTypeId: Microsoft.Maps.MapTypeId.aerial
                 });
@@ -23,10 +22,16 @@
                 });
                 var ZoneTileLayer = new Microsoft.Maps.TileLayer({
                     mercator: ZoneTileSource,
-                    opacity:0.5,
+                    opacity:0.6,
                 });
                 map.layers.insert(ZoneTileLayer);
+                Microsoft.Maps.Events.addHandler(map, 'click', function (e) { set_latitudes_and_longitude(e); });
                 
+            }
+            function set_latitudes_and_longitude(map)
+            {
+                console.log(map.location.latitude);
+                console.log(map.location.longitude);                
             }
         </script>
         <script type='text/javascript' src='https://www.bing.com/api/maps/mapcontrol?key=AhPe4ojD-5t0igIhrWqKo00EP35zbC3TqlosYmJpgLJGxJ1pXgav2C8NH8zbGwLq&callback=loadMapScenario' async defer></script>

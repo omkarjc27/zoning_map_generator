@@ -6,14 +6,14 @@ import numpy as np
 
 
 class generate_tiles:
-	def __init__(self,quad_prefix,filename,tiles_folder,bottom_level=19,max_image_prod=18):
+	def __init__(self,quad_prefix,filename,tiles_folder,bottom_level=18,max_image_prod=18):
 		self.quad_prefix = quad_prefix
 		self.max_image_prod = max_image_prod
 		self.bottom_level = bottom_level
 		self.tiles_folder = tiles_folder
 		self.data_dict = self.read_map_csv(filename)
 		self.colors_dict = {}
-		for i in range(21):self.colors_dict[i]=(random.randint(0,225),random.randint(0,225))
+		for i in range(12):self.colors_dict[i]=(random.randint(0,225),random.randint(0,225))
 		self.generate_matrix('')
 
 	def read_map_csv(self,filename):
@@ -50,4 +50,4 @@ class generate_tiles:
 		img = img.resize((256,256),resample=Image.NEAREST)
 		img.save(self.tiles_folder+self.quad_prefix+prefix+".jpg")
 
-generate_tiles('0230102302011','files/map_data.csv','tiles/')
+generate_tiles('123300311111','files/map_data.csv','tiles/')

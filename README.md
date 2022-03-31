@@ -1,6 +1,9 @@
 # Zoning Map Generator
 
 **Preview for a small region**
+
+![Screenshot2](files/screenshot2.png)
+
 ![Screenshot](files/screenshot.png)
 
 ## Data 
