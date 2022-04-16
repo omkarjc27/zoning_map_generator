@@ -4,10 +4,14 @@
         <title>Zoning Map</title>
         <meta http-equiv='Content-Type' content='text/html; charset=utf-8'/>
         <style type='text/css'>body{margin:0;padding:0;overflow:hidden}</style>
+        <link rel="stylesheet" href="main.css">
     </head>
     <body>
         <div id='printoutPanel'></div>
-        
+        <div class="w3-bottom" style="min-height: 100px;min-width: 100px;max-width: 200px;">        
+            <div class="w3-black w3-margin w3-padding" id='legend' style="z-index:1000;">        
+            </div>
+        </div>
         <div id='myMap' style='width: 100vw; height: 100vh;'></div>
         <script type='text/javascript'>
             function loadMapScenario() {
@@ -35,5 +39,28 @@
             }
         </script>
         <script type='text/javascript' src='https://www.bing.com/api/maps/mapcontrol?key=AhPe4ojD-5t0igIhrWqKo00EP35zbC3TqlosYmJpgLJGxJ1pXgav2C8NH8zbGwLq&callback=loadMapScenario' async defer></script>
+        <script type='text/javascript'>
+            leg = document.getElementById('legend')
+            colors = [
+                [204, 255, 255],
+                [204, 102, 0],
+                [51, 204, 51],
+                [0, 102, 0],
+                [0, 204, 102],
+                [0, 0, 0],
+                [255, 204, 0],
+                [102, 255, 102],
+                [255, 153, 255],
+                [255, 0, 0],
+                [51, 51, 153],
+                [102, 204, 255]
+            ]
+            index = ['airport', 'commercial', 'farmland', 'forest', 'green', 'highways','industrial', 'open', 'railway', 'residential', 'slums', 'water']
+            for (var i = 0; i < 12; i++) {
+                leg.innerHTML += '<span style="height: 20px;width:50px;background-color: rgb('+colors[i][0]+', '+colors[i][1]+', '+colors[i][2]+');">&nbsp;&nbsp;&nbsp;&nbsp;</span>&nbsp;'+index[i]+'<br>' 
+
+
+            }
+        </script>
     </body>
 </html>

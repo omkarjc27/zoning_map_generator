@@ -12,8 +12,20 @@ class generate_tiles:
 		self.bottom_level = bottom_level
 		self.tiles_folder = tiles_folder
 		self.data_dict = self.read_map_csv(filename)
-		self.colors_dict = {}
-		for i in range(12):self.colors_dict[i]=(random.randint(0,225),random.randint(0,225))
+		self.colors_dict = [
+			(204, 255, 255),
+			(204, 102, 0),
+			(51, 204, 51),
+			(0, 102, 0),
+			(0, 204, 102),
+			(0, 0, 0),
+			(255, 204, 0),
+			(102, 255, 102),
+			(255, 153, 255),
+			(255, 0, 0),
+			(51, 51, 153),
+			(102, 204, 255),
+		]
 		self.generate_matrix('')
 
 	def read_map_csv(self,filename):
@@ -28,7 +40,7 @@ class generate_tiles:
 		print(self.quad_prefix+prefix)
 		if len(self.quad_prefix+prefix)==self.bottom_level:
 			val = int(self.data_dict[prefix])
-			matrix = np.array([[(self.colors_dict[val][0], self.colors_dict[val][1], 100)]])
+			matrix = np.array([[(self.colors_dict[val][0], self.colors_dict[val][1], self.colors_dict[val][2])]])
 		else:
 			zeroth = self.generate_matrix(prefix+'0')
 			first = self.generate_matrix(prefix+'1')
@@ -50,4 +62,12 @@ class generate_tiles:
 		img = img.resize((256,256),resample=Image.NEAREST)
 		img.save(self.tiles_folder+self.quad_prefix+prefix+".jpg")
 
-generate_tiles('123300311111','files/map_data.csv','tiles/')
+
+# airport 12330031112120
+# railway 12330031113210
+# highway 12330031113213
+# slm&com 12330031112211 
+# water   1233003111113  
+# forest  12330031110130 
+
+generate_tiles('12330031113211','files/indust.csv','tiles/')
