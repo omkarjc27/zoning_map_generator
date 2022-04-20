@@ -70,4 +70,4 @@ class generate_tiles:
 # water   1233003111113  
 # forest  12330031110130 
 
-generate_tiles('12330031113211','files/indust.csv','tiles/')
+generate_tiles('1233003111213','files/3.csv','tiles/')
